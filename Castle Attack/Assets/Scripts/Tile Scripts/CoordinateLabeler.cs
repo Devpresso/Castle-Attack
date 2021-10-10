@@ -18,6 +18,7 @@ public class CoordinateLabeler : MonoBehaviour
     void Awake()
     {
         label = GetComponent<TextMeshPro>();
+        label.enabled = false;
         waypoint = GetComponentInParent<Waypoint>();
         DisplayCoords();
     }
@@ -32,6 +33,7 @@ public class CoordinateLabeler : MonoBehaviour
         }
 
         ColorCoords();
+        ToggleCoords();
     }
     
     void ColorCoords()
@@ -51,6 +53,14 @@ public class CoordinateLabeler : MonoBehaviour
         coords.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);
 
         label.text = coords.x + "," + coords.y;
+    }
+
+    void ToggleCoords()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            label.enabled = !label.enabled;
+        }
     }
 
     void UpdateObjectName()

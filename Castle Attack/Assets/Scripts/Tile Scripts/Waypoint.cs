@@ -12,7 +12,7 @@ public class Waypoint : MonoBehaviour
     {
         if (isPlaceable)
         {
-            Instantiate(ballista, transform.position, Quaternion.identity);
+            Instantiate(ballista, transform.position, Quaternion.identity, transform);
             isPlaceable = false;
         }
     }
