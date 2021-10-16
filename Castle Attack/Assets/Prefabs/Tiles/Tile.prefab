@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ac08fd9b65bd14f9bc8086630d79ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballista: {fileID: 705668712746558752, guid: 2adf75515ffdea24caa3216f337539f1, type: 3}
+  ballista: {fileID: 2374748689815309878, guid: 2adf75515ffdea24caa3216f337539f1, type: 3}
   isPlaceable: 1
 --- !u!65 &3223111832893199636
 BoxCollider:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5348157876636768219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 

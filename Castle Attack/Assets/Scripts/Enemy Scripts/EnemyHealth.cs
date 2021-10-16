@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int hitPoints = 5;
-    int currentHitPoints = 0;
+    [SerializeField] float maxHitPoints = 5f;
+    [Tooltip("Uses deaths to increas health")]
+    [SerializeField] float deaths = 0f;
+    float currentHitPoints = 0f;
 
     Enemy enemy;
     
@@ -18,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
     void OnEnable()
     {
-        currentHitPoints = hitPoints;
+        currentHitPoints = maxHitPoints;
     }
 
     void OnParticleCollision(GameObject other)
@@ -30,8 +33,13 @@ public class EnemyHealth : MonoBehaviour
     void ProcessHit()
     {
         currentHitPoints -= 1;
-        if (currentHitPoints <= 0)
+        if (currentHitPoints < 1)
         {
+            deaths += 1;
+            if (deaths >= 5)
+            {
+                maxHitPoints = Mathf.Log(Mathf.Pow(deaths, 5)) + Mathf.Sqrt(deaths);
+            }
             gameObject.SetActive(false);
             enemy.RewardGold();
         }
