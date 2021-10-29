@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float maxHitPoints = 5f;
     [Tooltip("Uses deaths to increas health")]
-    [SerializeField] float deaths = 0f;
+    [SerializeField] float plusHealthPerDeath = 0.8f;
     float currentHitPoints = 0f;
 
     Enemy enemy;
@@ -35,11 +35,7 @@ public class EnemyHealth : MonoBehaviour
         currentHitPoints -= 1;
         if (currentHitPoints < 1)
         {
-            deaths += 1;
-            if (deaths >= 5)
-            {
-                maxHitPoints = Mathf.Log(Mathf.Pow(deaths, 5)) + Mathf.Sqrt(deaths);
-            }
+            maxHitPoints += plusHealthPerDeath;
             gameObject.SetActive(false);
             enemy.RewardGold();
         }
